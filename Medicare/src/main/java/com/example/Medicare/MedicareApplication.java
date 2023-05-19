@@ -1,13 +1,13 @@
-package com.example.MyMoviePlan;
+package com.example.Medicare;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MyMoviePlanApplication {
+public class MedicareApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MyMoviePlanApplication.class, args);
+		SpringApplication.run(MedicareApplication.class, args);
 	}
 
 }
