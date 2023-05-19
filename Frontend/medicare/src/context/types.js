@@ -1,0 +1,14 @@
+export const ADMIN_LOGIN = "ADMIN_LOGIN";
+export const SET_PASSWORD = "SET_PASSWORD";
+export const LOGOUT_ADMIN = "LOGOUT_ADMIN";
+export const ADD_CART = "ADD_CART";
+export const GET_CART = "GET_CART";
+export const DELETE_CART = "DELETE_CART";
+export const MED_ADD = "MED_ADD";
+export const MED_UPDATE = "MED_UPDATE";
+export const MED_DELETE = "MED_DELETE";
+export const GET_MED = "GET_MED";
+export const USER_SIGNUP = "USER_SIGNUP";
+export const USER_LOGIN = "USER_LOGIN";
+export const USER_LOGOUT = "USER_LOGOUT";
+export const AUTH_ERROR = "AUTH_ERROR";

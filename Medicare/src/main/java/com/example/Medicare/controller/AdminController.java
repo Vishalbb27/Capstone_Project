@@ -41,6 +41,7 @@ public class AdminController {
 		if ((adminget.getEmail()).equals(ad.getEmail()) && (adminget.getPassword()).equals(ad.getPassword())) {
 			HttpSession usersession = request.getSession();
 			usersession.setAttribute("LoginCredentials", adminget);
+			System.out.println(usersession.getAttribute("LoginCredentials"));
 			return adminget;
 		} else {
 			return null;
