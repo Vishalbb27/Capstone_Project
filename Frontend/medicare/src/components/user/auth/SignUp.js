@@ -1,33 +1,42 @@
 import React from "react";
-import "../../style/pages/login.css";
-import QuizContext from "../../context/quizz/quizContext";
+import "../../../style/auth/login.css";
+import UserAuthContext from "../../../context/user/auth/userAuthContext";
 import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const quizContext = React.useContext(QuizContext);
-  const { userLogin, login, user } = quizContext;
+  const userAuthContext = React.useContext(UserAuthContext);
+  const { userSignup, login, user, signup } = userAuthContext;
 
   const [loginUser, setLogin] = React.useState({
     name: "",
     email: "",
+    phone: "",
+    address: "",
+    password: "",
   });
 
   React.useEffect(() => {
-    if (login) {
-      navigate("/");
+    if (signup) {
+      navigate("/userLogin");
     }
-  }, [login]);
+  }, [signup]);
 
-  const { name, email } = loginUser;
+  const { name, email, phone, address, password } = loginUser;
 
   const onChange = (e) =>
     setLogin({ ...loginUser, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (name != "" && email != "")
-      userLogin({
+    if (
+      name != "" &&
+      email != "" &&
+      phone != "" &&
+      address != "" &&
+      password != ""
+    )
+      userSignup({
         loginUser,
       });
   };
@@ -60,6 +69,45 @@ const SignUp = () => {
               required
               className="form__input"
               value={email}
+              onChange={onChange}
+            />
+            <span className="form__bar"></span>
+          </div>
+          <div className="form__group">
+            <i className="ri-mail-line form__icon"></i>
+            <input
+              type="text"
+              placeholder="Phone"
+              name="phone"
+              required
+              className="form__input"
+              value={phone}
+              onChange={onChange}
+            />
+            <span className="form__bar"></span>
+          </div>
+          <div className="form__group">
+            <i className="ri-mail-line form__icon"></i>
+            <input
+              type="text"
+              placeholder="Address"
+              name="address"
+              required
+              className="form__input"
+              value={address}
+              onChange={onChange}
+            />
+            <span className="form__bar"></span>
+          </div>
+          <div className="form__group">
+            <i className="ri-mail-line form__icon"></i>
+            <input
+              type="Password"
+              placeholder="Password"
+              name="password"
+              required
+              className="form__input"
+              value={password}
               onChange={onChange}
             />
             <span className="form__bar"></span>

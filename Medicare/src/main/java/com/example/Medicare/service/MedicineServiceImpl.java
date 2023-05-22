@@ -18,6 +18,7 @@ public class MedicineServiceImpl implements MedicineService {
 
 	@Override
 	public Medicine create(Medicine med) {
+		System.out.println(med);
 		Medicine medicine = medicineRepository.save(med);
 		return medicine;
 	}

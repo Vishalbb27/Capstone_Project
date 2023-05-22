@@ -70,15 +70,17 @@ public class Medicine {
 		return offers;
 	}
 
-	public void setOffers(int offers) {
+	public void setOffers(int offers) { 
 		this.offers = offers;
 	}
 
-	public boolean isEnabled() {
+	
+
+	public boolean getIsEnabled() {
 		return isEnabled;
 	}
 
-	public void setEnabled(boolean isEnabled) {
+	public void setIsEnabled(boolean isEnabled) {
 		this.isEnabled = isEnabled;
 	}
 
@@ -88,5 +90,7 @@ public class Medicine {
 				+ ", productDescription=" + productDescription + ", offers=" + offers + ", isEnabled=" + isEnabled
 				+ "]";
 	}
+
+	
 	
 }

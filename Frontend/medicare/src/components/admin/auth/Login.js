@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const navigate = useNavigate();
   const authContext = React.useContext(AuthContext);
-  const { userLogin, adminLogin } = authContext;
+  const { userLogin, adminLogin, admin } = authContext;
 
   const [loginUser, setLogin] = React.useState({
     email: "",
@@ -18,6 +18,8 @@ const Login = () => {
       navigate("/");
     }
   }, [adminLogin]);
+
+  console.log(admin);
 
   const { email, password } = loginUser;
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,41 +24,41 @@ import com.example.Medicare.service.UserService;
 
 @RestController
 public class CartController {
-	
+
 	@Autowired
 	CartService cartService;
-	
+
 	@Autowired
 	MedicineService medicineService;
-	
-	
+
+	@Autowired
+	UserService userService;
+
 	@PostMapping("/addCart/{id}")
-	public Cart addItem(@PathVariable int id,HttpServletRequest request) {
-//		HttpSession session= request.getSession();
-//		User user = (User) session.getAttribute("LoginCredentials");
-		
+	public List<Cart> addItem(@RequestBody User user,@PathVariable int id , HttpServletRequest request) {
+
 		Medicine medicine = medicineService.getMedicine(id);
-		User user = new User();
-		user.setId(1);
+
 		Cart cart = cartService.add(user, medicine);
-		return cart;
-		
-	}
-	
-	@GetMapping("/getCart")
-	public List<Cart> getCartItems(){
-//		HttpSession session= request.getSession();
-//		User user = (User) session.getAttribute("LoginCredentials");
-		User user = new User();
-		user.setId(1);
 		List<Cart> cartItems = cartService.getCartItems(user);
-		
+		return cartItems;
+
+	}
+
+	@GetMapping("/getCart")
+	public List<Cart> getCartItems(@RequestParam("email") String email) {
+		User user = userService.findbyemail(email);
+		List<Cart> cartItems = cartService.getCartItems(user);
+
 		return cartItems;
 	}
-	
+
 	@DeleteMapping("/deleteCart/{id}")
-	public String deleteCartItem(@PathVariable int id) {
+	public List<Cart> deleteCartItem(@RequestParam("email") String email,@PathVariable int id ) {
 		String str = cartService.deleteCartItem(id);
-		return str;
+		User user = userService.findbyemail(email);
+		List<Cart> cartItems = cartService.getCartItems(user);
+
+		return cartItems;
 	}
 }

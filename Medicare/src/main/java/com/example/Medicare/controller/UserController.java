@@ -18,6 +18,7 @@ public class UserController {
 	@PostMapping("/signup")
 	public User createUser(@RequestBody User user) {
 		User newUser = null;
+		System.out.println(user+"this is user details");
 		try {
 			newUser = userService.create(user);
 		} catch (DuplicateEmailException e) {
@@ -28,6 +29,7 @@ public class UserController {
 	
 	@PostMapping("/login")
 	public User loginUser(@RequestParam("email") String email, @RequestParam("password") String password) {
+		System.out.println("This is email"+email);
 		User user = userService.login(email, password);
 		return user;
 	}

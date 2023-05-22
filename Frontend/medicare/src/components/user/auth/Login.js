@@ -1,32 +1,32 @@
 import React from "react";
-import "../../style/pages/login.css";
-import QuizContext from "../../context/quizz/quizContext";
+import "../../../style/auth/login.css";
+import UserAuthContext from "../../../context/user/auth/userAuthContext";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
-  const quizContext = React.useContext(QuizContext);
-  const { userLogin, login, user } = quizContext;
+  const userAuthContext = React.useContext(UserAuthContext);
+  const { userLogin, login, user } = userAuthContext;
 
   const [loginUser, setLogin] = React.useState({
-    name: "",
     email: "",
+    password: "",
   });
 
   React.useEffect(() => {
     if (login) {
-      navigate("/");
+      navigate("/userHome");
     }
   }, [login]);
 
-  const { name, email } = loginUser;
+  const { email, password } = loginUser;
 
   const onChange = (e) =>
     setLogin({ ...loginUser, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (name != "" && email != "")
+    if (email != "" && password != "")
       userLogin({
         loginUser,
       });
@@ -42,11 +42,11 @@ const Login = () => {
             <i className="ri-user-line form__icon"></i>
             <input
               type="text"
-              placeholder="Name"
+              placeholder="Email"
               required
-              name="name"
+              name="email"
               className="form__input"
-              value={name}
+              value={email}
               onChange={onChange}
             />
             <span className="form__bar"></span>
@@ -54,12 +54,12 @@ const Login = () => {
           <div className="form__group">
             <i className="ri-mail-line form__icon"></i>
             <input
-              type="text"
-              placeholder="Email"
-              name="email"
+              type="password"
+              placeholder="Password"
+              name="password"
               required
               className="form__input"
-              value={email}
+              value={password}
               onChange={onChange}
             />
             <span className="form__bar"></span>

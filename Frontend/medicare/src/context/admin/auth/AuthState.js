@@ -3,18 +3,24 @@ import React, { useReducer } from "react";
 import AuthContext from "./authContext";
 import axios from "axios";
 import authReducer from "./authReducer";
+import setAuthToken from "../../../components/utils/setAuthToken";
 
 import { ADMIN_LOGIN, SET_PASSWORD, AUTH_ERROR } from "../../types";
 
 const AuthState = (props) => {
   const initialState = {
+    token: localStorage.getItem("admin"),
     admin: {},
     adminLogin: false,
+    isAuthenticated: false,
   };
 
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   const userLogin = async (loginUser) => {
+    if (localStorage.token != null) {
+      setAuthToken(localStorage.token);
+    }
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -53,6 +59,7 @@ const AuthState = (props) => {
         admin: state.admin,
         adminLogin: state.adminLogin,
         userLogin,
+        isAuthenticated: state.isAuthenticated,
       }}
     >
       {props.children}

@@ -1,0 +1,65 @@
+.confirmation-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.confirmation-container h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.address-section,
+.medicines-section,
+.total-amount-section,
+.thankyou-section {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.confirmation-container h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.confirmation-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.confirmation-container li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.medicine-name {
+  font-weight: bold;
+}
+
+.medicine-price {
+  color: #555;
+}
+
+.medicine-seller {
+  color: #888;
+}
+
+.confirmation-container p {
+  color: #555;
+}
+
+.back-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.back-link:hover {
+  background-color: #45a049;
+}

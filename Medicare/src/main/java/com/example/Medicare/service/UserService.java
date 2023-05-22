@@ -13,5 +13,5 @@ public interface UserService {
 	
 	User login(String email, String password);
 	
-	
+	User findbyemail(String email);
 }
