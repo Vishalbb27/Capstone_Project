@@ -5,7 +5,7 @@ import UserContext from "../../../../context/user/user/userContext";
 
 const MedicineList = () => {
   const userAuthContext = React.useContext(UserContext);
-  const { medicines, getMedicine, filtered,sorted,sort } = userAuthContext;
+  const { medicines, getMedicine, filtered, sorted, sort } = userAuthContext;
 
   React.useEffect(() => {
     console.log(medicines.data);

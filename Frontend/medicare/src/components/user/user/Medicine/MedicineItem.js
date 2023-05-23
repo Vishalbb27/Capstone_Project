@@ -28,8 +28,8 @@ const MedicineItem = ({ medicine }) => {
         <p className="item-seller">{medicine.seller}</p>
         <p className="item-seller">{medicine.productDescription}</p>
         <p className="medicine-price">
-          $ {medicine.price - (medicine.price * medicine.offers) / 100}.00{" "}
-          <span className="item-price-mrp">$ {medicine.price}.00</span>
+          $ {medicine.price - (medicine.price * medicine.offers) / 100}{" "}
+          <span className="item-price-mrp">$ {medicine.price}</span>
         </p>
         <p className="get-offers">GET {medicine.offers}% off</p>
         <button onClick={addCart}>Add to Cart</button>

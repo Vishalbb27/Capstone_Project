@@ -34,7 +34,7 @@ const Login = () => {
   return (
     <div className="login">
       <div className="login-container">
-        <span className="form__title">Login</span>
+        <span className="form__title">Admin</span>
         <form className="form" onSubmit={onSubmit}>
           <div className="form__group">
             <i className="ri-user-line form__icon"></i>

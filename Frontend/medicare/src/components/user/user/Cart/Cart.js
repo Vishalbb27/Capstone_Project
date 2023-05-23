@@ -3,6 +3,7 @@ import UserContext from "../../../../context/user/user/userContext";
 import CartItem from "./CartItem";
 import Navbar from "../../layout/Navbar";
 import PaymentItem from "./PaymentItem";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const userContext = React.useContext(UserContext);
@@ -16,21 +17,24 @@ const Cart = () => {
   console.log(localStorage.getItem("user"));
   React.useEffect(() => {
     getCartItems(parseData);
+    // eslint-disable-next-line
   }, []);
-  console.log(cartItems.length);
+  console.log(cartItems);
   return (
     <div>
       <Navbar name={parseData.name} />
       <div className="cart">
         <div className="cartContainer">
-          {cartItems.length !== 0 ? (
+          {cartItems.data ? (
             <ul>
               {cartItems.data.map((item) => (
                 <CartItem key={item.id} item={item} user={parseData} />
               ))}
             </ul>
           ) : (
-            <h1>hi</h1>
+            <h1>
+              Add items to cart <Link to="/userHome">click here</Link>
+            </h1>
           )}
         </div>
         <div>

@@ -18,11 +18,13 @@ const CartItem = ({ item, user }) => {
         <h3 className="item-name">{name}</h3>
         <p className="item-seller">{seller}</p>
         <p className="item-description">{productDescription}</p>
-        <p className="item-offerprice">${price-(offers * price) / 100}.00</p>
+        <p className="item-offerprice">${price - (offers * price) / 100}</p>
 
         <p className="item-price">
-          <span className="item-price-mrp">$ {price}.00 </span>
-          <span className="save">&nbsp;&nbsp;Save ${(offers * price / 100)}.00</span>
+          <span className="item-price-mrp">$ {price} </span>
+          <span className="save">
+            &nbsp;&nbsp;Save ${(offers * price) / 100}
+          </span>
         </p>
       </div>
       <button className="item-delete-button" onClick={handleRemove}>

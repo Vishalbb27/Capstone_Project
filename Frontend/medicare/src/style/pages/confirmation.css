@@ -1,13 +1,16 @@
 .confirmation-container {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 10px auto;
   padding: 20px;
   text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
 .confirmation-container h2 {
   color: #333;
   margin-bottom: 20px;
+  color: green;
 }
 
 .address-section,
@@ -62,4 +65,24 @@
 
 .back-link:hover {
   background-color: #45a049;
+}
+
+.thankyou-section {
+  text-align: center;
+}
+
+.confirmation-price {
+  text-align: left;
+  text-align: left;
+    margin: 20px 0px;
+    padding: 0px
+}
+
+.product-name{
+  color: black;
+}
+
+.product-price{
+  color: #f9347c;
+
 }

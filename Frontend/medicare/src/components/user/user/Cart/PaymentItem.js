@@ -18,15 +18,15 @@ const PaymentItem = ({ cartItems }) => {
     data &&
       data.map(
         (item) => (
-          (mrp += item.medicine.price * 1),
-          (addDiscount += (item.medicine.price * item.medicine.offers) / 100),
+          (mrp += Math.round(item.medicine.price * 1)),
+          (addDiscount += Math.round((item.medicine.price * item.medicine.offers) / 100)),
           (totalAmount +=
-            item.medicine.price -
-            (item.medicine.price * item.medicine.offers) / 100),
+            Math.round(item.medicine.price -
+            (item.medicine.price * item.medicine.offers) / 100)),
           (total +=
-            item.medicine.price -
-            (item.medicine.price * item.medicine.offers) / 100),
-          (savings += (item.medicine.price * item.medicine.offers) / 100)
+            Math.round(item.medicine.price -
+            (item.medicine.price * item.medicine.offers) / 100)),
+          (savings += Math.round((item.medicine.price * item.medicine.offers) / 100))
         )
       );
   }
@@ -46,32 +46,32 @@ const PaymentItem = ({ cartItems }) => {
     <div className="payment">
       <h3 className="payDetail">PAYMENT DETAILS </h3>
       <p className="priceDetail">
-        MRP Total<span className="price pay-item">$ {mrp}.00</span>
+        MRP Total<span className="price pay-item">$ {mrp}</span>
       </p>
       <p className="priceDetail">
         Additional Discount
-        <span className="price pay-item">- $ {addDiscount}.00</span>
+        <span className="price pay-item">- $ {addDiscount}</span>
       </p>
       <p className="priceDetail ">
-        Total Amout<span className="price pay-item">$ {totalAmount}.00</span>
+        Total Amout<span className="price pay-item">$ {totalAmount}</span>
       </p>
 
       <p className="priceDetail totalpayable">
         <span className="pricesave">
           Total Payable
-          <span className="pricesave pay-item">$ {totalAmount}.00</span>
+          <span className="pricesave pay-item">$ {totalAmount}</span>
         </span>
       </p>
       <p className="priceDetail totalsaving">
         <span className="pricesave">
           Total Savings
-          <span className="pricesave pay-item">$ {savings}.00</span>
+          <span className="pricesave pay-item">$ {savings}</span>
         </span>
       </p>
       <div className="totalprice">
         <div>
           <p className="totalpara">Total Payable</p>
-          <p className="totalpay pay-item">$ {total}.00</p>
+          <p className="totalpay pay-item">$ {total}</p>
         </div>
 
         <button

@@ -82,6 +82,8 @@ select::-ms-expand {
   transition: 0.25s all ease;
   pointer-events: none;
 }
+
+
 /* Transition */
 .select:hover::after {
   color: #f39c12;

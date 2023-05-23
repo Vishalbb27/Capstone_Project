@@ -35,7 +35,18 @@ const MedincineFilter = () => {
   return (
     <div className="filter">
       <form className="search-bar">
-        <div>Filter</div>
+        <div className="select">
+          <label htmlFor="sorting" className="sortby">
+            Filter
+          </label>
+          <select
+            id="sorting"
+            value={sortOption}
+            onChange={handleSortOptionChange}
+          >
+            <option value="nameAsc">Seller</option>
+          </select>
+        </div>
         <div>
           <input
             className="search-input"
@@ -46,14 +57,20 @@ const MedincineFilter = () => {
           />
         </div>
         <div className="select">
-          <label htmlFor="sorting" className="sortby">Sort By</label>
-          <select id="sorting" value={sortOption} onChange={handleSortOptionChange}>
+          <label htmlFor="sorting" className="sortby">
+            Sort By
+          </label>
+          <select
+            id="sorting"
+            value={sortOption}
+            onChange={handleSortOptionChange}
+          >
             <option value="default"></option>
             <option value="priceAsc">Price -- Low to High</option>
             <option value="priceDesc">Price -- High to Low</option>
             <option value="nameAsc">Name (A-Z)</option>
             <option value="nameDesc">Name (Z-A)</option>
-            <option value ="offers">Offers</option>
+            <option value="offers">Offers</option>
           </select>
         </div>
       </form>

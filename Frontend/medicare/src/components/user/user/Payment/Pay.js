@@ -2,7 +2,7 @@ import React from "react";
 import "../../../../style/pages/payment.css";
 import { useNavigate } from "react-router-dom";
 const Payment = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   var parseData;
   const storeData = localStorage.getItem("payment");
   if (storeData) {
@@ -15,11 +15,12 @@ const Payment = () => {
     parseData3 = JSON.parse(storeData3);
     console.log(parseData3);
   }
-  const onClick = () =>{
-    navigate("/userConfirmation")
-  }
+  const onClick = () => {
+    navigate("/userConfirmation");
+  };
   return (
-    (parseData && parseData3.addresss) && (
+    parseData &&
+    parseData3.addresss && (
       <div className="payment-container">
         <div class="app-container">
           <div class="top-box">

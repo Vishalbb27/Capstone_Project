@@ -2,20 +2,22 @@ import React from "react";
 import UserContext from "../../../../context/user/user/userContext";
 import { Link } from "react-router-dom";
 import "../../../../style/pages/confirmation.css";
+import ConfirmationItem from "./ConfirmationItem";
+import "../../../../style/pages/medicine.css";
+import "../../../../style/pages/shipping.css";
 
 const Confirmation = () => {
   const userContext = React.useContext(UserContext);
+
   const { getCartItems, cartItems, deleteCartItems } = userContext;
+  React.useEffect(() => {
+    getCartItems(parseData);
+  }, []);
   var parseData;
   const storeData = localStorage.getItem("user");
   if (storeData) {
     parseData = JSON.parse(storeData);
   }
-
-  var displaydata = null;
-  React.useEffect(() => {
-    getCartItems(parseData);
-  }, []);
 
   var parseData2;
   const storeData2 = localStorage.getItem("shipping");
@@ -29,44 +31,58 @@ const Confirmation = () => {
     parseData3 = JSON.parse(storeData3);
   }
 
-  displaydata=cartItems
-  console.log(displaydata);
   console.log(cartItems);
 
   return (
     parseData3 &&
     parseData2.addresss && (
       <div className="confirmation-container">
-        <h2>Confirmation Page</h2>
+        <h2>Order Confirmation</h2>
         <div className="address-section">
           <h3>Delivery Address:</h3>
           <p>{parseData2.addresss}</p>
+          <p>
+            {parseData2.zipcodes}, {parseData2.states}
+          </p>
         </div>
         <div className="medicines-section">
           <h3>Medicines:</h3>
           <ul>
-            {cartItems &&
-              cartItems.data.map((medicine, index) => (
-                <li key={index}>
-                  <span>{medicine.medicine.name}</span>
-                  <span>{medicine.medicine.price}</span>
-                </li>
-              ))}
+            {cartItems.data ? (
+              cartItems.data.map((item) => (
+                <ConfirmationItem key={item.id} item={item} user={parseData} />
+              ))
+            ) : (
+              <h1>No data</h1>
+            )}
           </ul>
         </div>
-        <div className="total-amount-section">
-          <h3>Total Amount:</h3>
-          <p>{parseData3.total}</p>
+        <hr />
+        <div className="priceDetail totalpayable confirmation-price">
+          <span className="pricesave">
+            Total
+            <span className="pricesave pay-item">
+              $ {parseData3.totalAmount}.00
+            </span>
+          </span>
         </div>
+
+        <div className="priceDetail totalsaving confirmation-price">
+          <span className="pricesave">
+            Total Savings
+            <span className="pricesave pay-item ">
+              $ {parseData3.addDiscount}.00
+            </span>
+          </span>
+        </div>
+
         <div className="thankyou-section">
-          <p>Thank you for using Medicare!</p>
+          <h2>Thank you for using Medicare!</h2>
         </div>
-        <p>
-          Back to
-          <Link to="/userHome" className="back-link">
-            Home
-          </Link>
-        </p>
+        <h3>
+          Back to&nbsp;
+          <Link to="/userHome">Home</Link>
+        </h3>
       </div>
     )
   );

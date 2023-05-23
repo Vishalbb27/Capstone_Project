@@ -17,7 +17,7 @@ import {
 } from "../../types";
 const UserState = (props) => {
   const initialState = {
-    cartItems: [],
+    cartItems: null,
     medicines: [],
     home: true,
     cart: false,

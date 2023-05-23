@@ -32,6 +32,7 @@ public class MedicineServiceImpl implements MedicineService {
 		medicare.setOffers(med.getOffers());
 		medicare.setProductDescription(med.getProductDescription());
 		medicare.setSeller(med.getSeller());
+		medicare.setIsEnabled(med.getIsEnabled());
 		medicineRepository.save(medicare);
 		return medicare;
 	}
